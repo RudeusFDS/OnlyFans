@@ -15,11 +15,10 @@
             width: 100%;
             height: 100%;
         }
-        #muteButton {
+        #startButton {
             position: absolute;
             top: 20px;
             left: 20px;
-            z-index: 1000;
             background-color: white;
             border: none;
             padding: 10px;
@@ -28,8 +27,8 @@
     </style>
 </head>
 <body>
-    <iframe id="jumpscareVideo" src="https://www.youtube.com/embed/ekFLaTC0D5c?autoplay=1" frameborder="0" allowfullscreen></iframe>
-    <button id="muteButton">Activer le son</button>
+    <iframe id="jumpscareVideo" src="https://www.youtube.com/embed/8CWpefEzAmc?autoplay=1" frameborder="0" allowfullscreen></iframe>
+    <button id="startButton">Démarrer la vidéo</button>
 
     <script>
         function enterFullscreen() {
@@ -45,15 +44,11 @@
             }
         }
 
-        window.onload = function() {
+        document.getElementById('startButton').onclick = function() {
+            // Enlève le muet et entre en plein écran
+            const video = document.getElementById('jumpscareVideo');
             enterFullscreen();
+            this.style.display = 'none'; // Cache le bouton après activation
         };
 
-        document.getElementById('muteButton').onclick = function() {
-            const video = document.getElementById('jumpscareVideo');
-            video.src = video.src.replace("&mute=1", ""); // Enlève la mise en sourdine
-            this.style.display = 'none'; // Cache le bouton après activation du son
-        };
-    </script>
-</body>
-</html>
+        // Optionnel : entre en plein écran
