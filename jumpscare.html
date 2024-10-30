@@ -18,15 +18,12 @@
     </style>
 </head>
 <body>
-    <a href="#" id="fullscreenLink">Clique ici pour voir la vidéo en plein écran</a>
     <iframe id="jumpscareVideo" src="https://www.youtube.com/embed/ekFLaTC0D5c?autoplay=1" frameborder="0" allowfullscreen></iframe>
 
     <script>
-        document.getElementById('fullscreenLink').onclick = function(event) {
-            event.preventDefault(); // Empêche le lien de suivre l'URL
+        // Fonction pour entrer en mode plein écran
+        function enterFullscreen() {
             const video = document.getElementById('jumpscareVideo');
-
-            // Demande d'entrer en mode plein écran
             if (video.requestFullscreen) {
                 video.requestFullscreen();
             } else if (video.mozRequestFullScreen) { // Firefox
@@ -36,8 +33,11 @@
             } else if (video.msRequestFullscreen) { // IE/Edge
                 video.msRequestFullscreen();
             }
+        }
 
-            video.style.display = 'block'; // Affiche l'iframe si nécessaire
+        // Attendre que la page soit complètement chargée avant d'entrer en plein écran
+        window.onload = function() {
+            enterFullscreen();
         };
     </script>
 </body>
