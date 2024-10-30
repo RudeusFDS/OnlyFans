@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vidéo Jumpscare</title>
+    <title>Vidéo</title>
     <style>
         body, html {
             margin: 0;
@@ -11,7 +11,7 @@
             height: 100%;
             overflow: hidden;
         }
-        #jumpscareVideo {
+        #video {
             width: 100%;
             height: 100%;
         }
@@ -27,12 +27,12 @@
     </style>
 </head>
 <body>
-    <iframe id="jumpscareVideo" src="https://www.youtube.com/embed/8CWpefEzAmc?autoplay=1" frameborder="0" allowfullscreen></iframe>
+    <iframe id="video" src="https://www.youtube.com/embed/8CWpefEzAmc?autoplay=1" frameborder="0" allowfullscreen></iframe>
     <button id="startButton">Démarrer la vidéo</button>
 
     <script>
         function enterFullscreen() {
-            const video = document.getElementById('jumpscareVideo');
+            const video = document.getElementById('video');
             if (video.requestFullscreen) {
                 video.requestFullscreen();
             } else if (video.mozRequestFullScreen) {
@@ -45,10 +45,13 @@
         }
 
         document.getElementById('startButton').onclick = function() {
-            // Enlève le muet et entre en plein écran
-            const video = document.getElementById('jumpscareVideo');
             enterFullscreen();
             this.style.display = 'none'; // Cache le bouton après activation
         };
 
-        // Optionnel : entre en plein écran
+        window.onload = function() {
+            enterFullscreen();
+        };
+    </script>
+</body>
+</html>
