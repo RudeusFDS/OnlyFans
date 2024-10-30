@@ -18,6 +18,27 @@
     </style>
 </head>
 <body>
-    <iframe id="jumpscareVideo" src="https://www.youtube.com/embed/ekFLaTC0D5c?autoplay=1&mute=1" frameborder="0" allowfullscreen></iframe>
+    <a href="#" id="fullscreenLink">Clique ici pour voir la vidéo en plein écran</a>
+    <iframe id="jumpscareVideo" src="https://www.youtube.com/embed/ekFLaTC0D5c?autoplay=1" frameborder="0" allowfullscreen></iframe>
+
+    <script>
+        document.getElementById('fullscreenLink').onclick = function(event) {
+            event.preventDefault(); // Empêche le lien de suivre l'URL
+            const video = document.getElementById('jumpscareVideo');
+
+            // Demande d'entrer en mode plein écran
+            if (video.requestFullscreen) {
+                video.requestFullscreen();
+            } else if (video.mozRequestFullScreen) { // Firefox
+                video.mozRequestFullScreen();
+            } else if (video.webkitRequestFullscreen) { // Chrome, Safari et Opera
+                video.webkitRequestFullscreen();
+            } else if (video.msRequestFullscreen) { // IE/Edge
+                video.msRequestFullscreen();
+            }
+
+            video.style.display = 'block'; // Affiche l'iframe si nécessaire
+        };
+    </script>
 </body>
 </html>
